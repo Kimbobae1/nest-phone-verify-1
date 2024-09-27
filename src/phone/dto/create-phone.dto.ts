@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class SendCodeDto {
+export class CreatePhoneDto {
   @ApiProperty()
-  code : string;
+  phoneNumber : string;
 }

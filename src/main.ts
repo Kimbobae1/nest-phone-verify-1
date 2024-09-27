@@ -1,11 +1,20 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { initializeTransactionalContext } from 'typeorm-transactional';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   initializeTransactionalContext();
 
   const app = await NestFactory.create(AppModule);
+
+  const config = new DocumentBuilder()
+    .setTitle("Phone API")
+    .build();
+
+  const document = SwaggerModule.createDocument(app,config);
+  SwaggerModule.setup('api', app, document);
+
   // TODO: 프로그램 구현
   await app.listen(process.env.PORT || 8000);
 
