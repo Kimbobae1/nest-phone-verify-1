@@ -14,11 +14,11 @@ import { PhoneModule } from './phone/phone.module';
         return {
           //DB 설정을 .env에서 가져오려면?
           type: 'postgres',
-          host: 'localhost',
-          port: 5432,
-          username: 'postgres',
-          password: 'kbb',
-          database: 'phone',
+          host:  process.env.DB_HOST,
+          port:  parseInt(process.env.DB_PORT),
+          username: process.env.DB_USERNAME,
+          password:  process.env.DB_PASSWORD,
+          database:  process.env.DB_DATABASE,
           synchronize: true,
           timezone: 'Z',
           //DB 설정할때 entity 경로 지정
